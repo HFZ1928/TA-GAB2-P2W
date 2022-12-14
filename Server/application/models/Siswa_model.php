@@ -9,7 +9,8 @@ class Siswa_model extends CI_Model { // membuat class Siswa_Model dengan extends
     
         
        $this->db->select("id AS id_mhs,
-       nisn AS npm_siswa,
+       nisn AS npm_siswa, 
+       
        nama AS nama_siswa,
        email AS email_siswa,
        jurusan AS jurusan_siswa
