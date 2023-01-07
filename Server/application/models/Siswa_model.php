@@ -1,28 +1,36 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
+class Siswa_model extends CI_Model {
 
-class Siswa_model extends CI_Model { // membuat class Siswa_Model dengan extends ke CI_Model
 
-    public function getSiswa(){ // membuat fungsi getSiswa() pada file models
+    public function getSiswa($id = null){ // membuat fungsi model tampil / lihat data dari database
         
-    
-        
-       $this->db->select("id AS id_mhs,
-       nisn AS npm_siswa, 
-       
-       nama AS nama_siswa,
-       email AS email_siswa,
-       jurusan AS jurusan_siswa
-       "); // query ke database untuk menampilkan isi database
-       $this->db->from("siswa");// query ke database dan nama tabel untuk menampilkan isi database
-       $this->db->order_by("nisn", "ASC");// query ke database untuk menampilkan isi database
+        if ( $id == null){ // kondisi jika id tidak di masukkan maka tampilkan seluruh data
+            return $this->db->get('siswa')->result_array();
+        }else{// kondisi jika user memasukkan id yang dicari, maka akan muncul id tersebut yang dicari
+            return $this->db->get_where('siswa',['id' => $id])->result_array();    
+        }
+    }
 
-       $query = $this->db->get()->result(); // kode program untuk menampilkan isi database dengan method GET() 
-       return $query; // mengembalikan nilai variabel $query
+
+
+    public function deleteSiswa($id){ // membuat fungsi delete siswa by id
+
+        $this->db->delete('siswa', ['id' => $id]); 
+        return $this->db->affected_rows();
+    }
+
+
+    public function createSiswa($data) // membuat fungsi tambah data
+    {
+        $this->db->insert('siswa', $data);
+        return $this->db->affected_rows();
+    }
+
+
+    public function updateSiswa($data, $id){ // membuat fungsi update data 
+        $this->db->update('siswa',$data, ['id'=> $id]);
+        return $this->db->affected_rows();
     }
 
 }
-
-
-?>
