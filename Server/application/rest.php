@@ -110,7 +110,7 @@ $config['rest_realm'] = 'REST API';
 |           authorization key
 |
 */
-$config['rest_auth'] = 'basic';
+$config['rest_auth'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -323,9 +323,10 @@ $config['rest_keys_table'] = 'keys';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
+
 $config['rest_enable_keys'] = true;
 
-/*
+/* 
 |--------------------------------------------------------------------------
 | REST Table Key Column Name
 |--------------------------------------------------------------------------
@@ -375,7 +376,7 @@ $config['rest_key_length'] = 40;
 | Note: Custom headers with the X- prefix are deprecated as of
 | 2012/06/12. See RFC 6648 specification for more details
 |
-*/
+*/ 
 $config['rest_key_name'] = 'X-API-KEY';
 
 /*
@@ -482,7 +483,7 @@ $config['rest_logs_json_params'] = FALSE;
 | To specify the limits within the controller's __construct() method, add per-method
 | limits with:
 |
-|       $this->method['METHOD_NAME']['limit'] = [NUM_REQUESTS_PER_HOUR];
+| $this->method['METHOD_NAME']['limit'] = [NUM_REQUESTS_PER_HOUR];
 |
 | See application/controllers/api/example.php for examples
 */

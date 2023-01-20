@@ -20,6 +20,7 @@ class Siswa extends REST_Controller{
         $this->load->model('Siswa_model', 'siswa'); // load model siswa
        
         $this->methods['index_get']['limit'] = 2;
+        
     }
 
 
@@ -105,10 +106,10 @@ class Siswa extends REST_Controller{
 
         $id = $this->put('id');
         $data = [
-            'nrp' => $this->post('nrp'),
-            'nama' => $this->post('nama'),
-            'email' => $this->post('email'),
-            'jurusan' => $this->post('jurusan')
+            'nrp' => $this->put('nrp'),
+            'nama' => $this->put('nama'),
+            'email' => $this->put('email'),
+            'jurusan' => $this->put('jurusan')
         ];
 
         if($this->siswa->updateSiswa($data, $id) > 0){ // kondisi jika data berhasil diupdate
