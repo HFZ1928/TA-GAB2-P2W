@@ -21,5 +21,16 @@ class Siswa_model extends CI_Model {
     }
 
 
+    public function createSiswa($data) // membuat fungsi tambah data
+    {
+        $this->db->insert('siswa', $data);
+        return $this->db->affected_rows();
+    }
+
+
+    public function updateSiswa($data, $id){ // membuat fungsi update data 
+        $this->db->update('siswa',$data, ['id'=> $id]);
+        return $this->db->affected_rows();
+    }
 
 }
